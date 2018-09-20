@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment} from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getPosts } from '../reducers/posts'
@@ -83,6 +83,7 @@ userOptions = () => {
             <Icon name='users' circular />
             <Header.Content>FRIENDS POSTS</Header.Content>
           </Header>
+          <Fragment>
           <Dropdown
             placeholder="Search Users"
             fluid
@@ -104,6 +105,7 @@ userOptions = () => {
           <Feed>
             {this.posts()}
           </Feed>
+        </Fragment>
       </Container>
     )
   }
