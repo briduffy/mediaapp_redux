@@ -84,27 +84,27 @@ userOptions = () => {
             <Header.Content>FRIENDS POSTS</Header.Content>
           </Header>
           <Fragment>
-          <Dropdown
-            placeholder="Search Users"
-            fluid
-            selection
-            options={this.userOptions()}
-            onChange={ (e, data) => this.setState({user: data.value }) }
-            value={user}
-          />
-          {user && <Button
-                      fluid
-                      basic
-                      compact
-                      color="blue"
-                      onClick={ () => this.setState({ user: ''}) }>
-                      RESET USER: {user}
-                    </Button>
-          }
-          <Divider />
-          <Feed>
-            {this.posts()}
-          </Feed>
+            <Dropdown
+              placeholder="Search Users"
+              fluid
+              selection
+              options={this.userOptions()}
+              onChange={ (e, data) => this.setState({user: data.value }) }
+              value={user}
+            />
+            {user && <Button
+                        fluid
+                        basic
+                        compact
+                        color="blue"
+                        onClick={ () => this.setState({ user: ''}) }>
+                        RESET USER: {user}
+                      </Button>
+            }
+            <Divider />
+            <Feed>
+             {this.posts()}
+            </Feed>
         </Fragment>
       </Container>
     )
