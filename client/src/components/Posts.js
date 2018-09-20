@@ -13,9 +13,19 @@ import {
   Divider,
   Dropdown
 } from 'semantic-ui-react'
+import PostForm from './PostForm'
 
 class Posts extends React.Component {
-  state = { user: ''}
+  state = { users: '', showForm: false }
+
+  toggleForm = () => {
+    this.setState({ showForm: !this.state.showForm }) 
+  }
+
+  userOptions = () => {
+    const { users } = this.props
+    return users.map( (u) => { return { key: u, text: u, value: u } } )
+  }
 
 
   posts = () => {
@@ -28,6 +38,7 @@ class Posts extends React.Component {
       visible = posts.filter( p => p.user === user )
 
       return visible.map( post => {
+        const { user, location, time, post } = post
         return (
         <Grid columns={3} contentAlign="center" textAlign="center">
           <Grid.Column></Grid.Column>
@@ -66,17 +77,18 @@ class Posts extends React.Component {
             </GridColumn>
           <Grid.Column></Grid.Column>
         </Grid>
-      )
-    }
-  )
+        )
+      }
+    )
 }
 
-userOptions = () => {
-  return this.props.users.map( (u, i) => {return { key: i, text: u, value: u} })
+handleChange = (_, {value}) => {
+  this.setState({ user: value })
 }
 
   render() {
-    let { user } = this.state
+    const { user, showForm } = this.state
+
     return (
       <Container>
           <Header as="h1" icon textAlign="center" color="blue">
@@ -112,7 +124,7 @@ userOptions = () => {
 }
 
 const mapStateToProps = (state) => {
-  const posts = state.posts
+  const { posts } = state
   const users = [...new Set(posts.map( p => p.user ))]
   return {posts, users}
 }

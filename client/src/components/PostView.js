@@ -1,27 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PostForm from './PostForm'
 import {
   Divider,
   Header,
   Grid,
   GridColumn,
-  Message, 
-  StatisticLabel,
-  FeedUser} from 'semantic-ui-react'
+  Container,
+  Message } from 'semantic-ui-react'
 
 const PostView = ({ post = {} }) => (
-
-  <Grid columns={3}>
-    <Grid.Column></Grid.Column>
-    <GridColumn textAlign="center">
+  <Container>
     <Link to="/posts">ALL POSTS</Link>
       <div>
-        <p>{post.post}</p>
+        <p>{post.text}</p>
       </div>
-    </GridColumn>
-    <GridColumn></GridColumn>
-  </Grid>
+  </Container>
 )
 
 const mapStateToProps = (state, props) => {
